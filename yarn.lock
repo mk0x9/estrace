@@ -14,6 +14,13 @@
   dependencies:
     "@types/estree" "*"
 
+"@types/estraverse@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@types/estraverse/-/estraverse-0.0.6.tgz#669f7cdf72ab797e6125f8d00fed33d4cf30c221"
+  integrity sha1-Zp9833KreX5hJfjQD+0z1M8wwiE=
+  dependencies:
+    "@types/estree" "*"
+
 "@types/estree@*":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"

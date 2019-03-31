@@ -1,7 +1,8 @@
 import * as url from 'url';
 import * as http from 'http';
 import httpProxy from 'http-proxy';
-import { parseScript, Program } from 'esprima';
+import { parseScript } from 'esprima';
+import { Program } from 'estree';
 import escodegen from 'escodegen';
 import zlib from 'zlib';
 
@@ -16,11 +17,7 @@ const PORT = 8080;
 const BIND_HOST = '127.0.0.1';
 
 console.log(
-    `proxying http://${BIND_HOST}:${PORT}/abc to http://${passedUrl.host}${
-        passedUrl.port !== null && passedUrl.port !== '80'
-            ? ':' + passedUrl.port
-            : ''
-    }/abc`
+    `proxying http://${BIND_HOST}:${PORT}/abc to http://${passedUrl.host}/abc`
 );
 
 const proxy = httpProxy.createProxyServer({
@@ -95,10 +92,19 @@ proxy.on(
                 proxyRes.statusMessage,
                 headers
             );
+
             if (!ast) {
                 res.end(body);
             } else {
-                res.end(escodegen.generate(processAst(ast)));
+                console.log(`instrumenting: ${req.url}`);
+
+                const processedAst = processAst(
+                    req.url || 'unknownUrl' + Math.random(),
+                    ast
+                );
+                const generatedCode = escodegen.generate(processedAst);
+
+                res.end(generatedCode);
             }
         });
     }
