@@ -59,7 +59,11 @@ proxy.on(
             let ast: Program | undefined;
             if (sBody.trim() !== '') {
                 try {
-                    ast = parseScript(sBody);
+                    ast = parseScript(sBody, {
+                        loc: true,
+                        tokens: true,
+                        comment: true
+                    });
                 } catch {}
             }
 
