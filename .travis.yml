@@ -1,12 +1,11 @@
 dist: trusty
-language: java
 
 addons:
   sonarcloud:
     organization: "mk0x9-github"
 
 script:
-  - sonar_scanner
+  - sonar-scanner
 
 jdk:
   - oraclejdk 8
