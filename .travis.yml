@@ -1,0 +1,11 @@
+dist: trusty
+
+addons:
+  sonarcloud:
+    organization: "mk0x9-github"
+
+script:
+  - sonar_scanner
+
+jdk:
+  - oraclejdk 8
