@@ -16,7 +16,7 @@
     "esprima": "^4.0.1",
     "estraverse": "^4.2.0",
     "http-proxy": "^1.17.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.1"
   },
